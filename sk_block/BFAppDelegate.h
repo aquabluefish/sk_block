@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BFViewController.h"                                    // ViewControllerクラスをインポート
 
 @interface BFAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong,nonatomic) BFViewController *viewController;  // viewControllerのインスタンスを保持するためのプロパティ追加
 @end

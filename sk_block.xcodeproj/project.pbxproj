@@ -19,6 +19,7 @@
 		D161AA2B18C4D07900521200 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D161AA1318C4D07300521200 /* UIKit.framework */; };
 		D161AA3318C4D07B00521200 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D161AA3118C4D07B00521200 /* InfoPlist.strings */; };
 		D161AA3518C4D07C00521200 /* sk_blockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D161AA3418C4D07C00521200 /* sk_blockTests.m */; };
+		D161AA4018C4D38B00521200 /* BFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D161AA3F18C4D38B00521200 /* BFViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		D161AA3018C4D07A00521200 /* sk_blockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "sk_blockTests-Info.plist"; sourceTree = "<group>"; };
 		D161AA3218C4D07B00521200 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D161AA3418C4D07C00521200 /* sk_blockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = sk_blockTests.m; sourceTree = "<group>"; };
+		D161AA3E18C4D38B00521200 /* BFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BFViewController.h; path = ../BFViewController.h; sourceTree = "<group>"; };
+		D161AA3F18C4D38B00521200 /* BFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BFViewController.m; path = ../BFViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 			children = (
 				D161AA1E18C4D07700521200 /* BFAppDelegate.h */,
 				D161AA1F18C4D07700521200 /* BFAppDelegate.m */,
+				D161AA3E18C4D38B00521200 /* BFViewController.h */,
+				D161AA3F18C4D38B00521200 /* BFViewController.m */,
 				D161AA2118C4D07900521200 /* Images.xcassets */,
 				D161AA1618C4D07400521200 /* Supporting Files */,
 			);
@@ -243,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D161AA4018C4D38B00521200 /* BFViewController.m in Sources */,
 				D161AA2018C4D07700521200 /* BFAppDelegate.m in Sources */,
 				D161AA1C18C4D07600521200 /* main.m in Sources */,
 			);
