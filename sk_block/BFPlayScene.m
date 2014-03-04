@@ -160,6 +160,27 @@ static NSDictionary *config = nil;
     int life = [block.userData[@"life"] intValue] - 1;
     block.userData[@"life"] = @(life);
     [self updateBlockAlpha:block];
+    
+    if (life < 1) {
+        [self removeNodeWithSpark:block];
+    }
+}
+
+# pragma mark - Utilities
+
+- (void)removeNodeWithSpark:(SKNode *)node {
+    NSString *sparkPath = [[NSBundle mainBundle] pathForResource:@"spark" ofType:@"sks"];
+    SKEmitterNode *spark = [NSKeyedUnarchiver unarchiveObjectWithFile:sparkPath];
+    spark.position = node.position;
+    spark.xScale = spark.yScale = 0.3f;
+    [self addChild:spark];
+    
+    SKAction *fadeOut = [SKAction fadeOutWithDuration:0.3f];
+    SKAction *remove = [SKAction removeFromParent];
+    SKAction *sequence = [SKAction sequence:@[fadeOut, remove]];
+    [spark runAction:sequence];
+    
+    [node removeFromParent];
 }
 
 - (void)updateBlockAlpha:(SKNode *)block {

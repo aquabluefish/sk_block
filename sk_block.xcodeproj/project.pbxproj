@@ -23,6 +23,20 @@
 		D161AA4618C6115A00521200 /* BFTitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D161AA4518C6115A00521200 /* BFTitleScene.m */; };
 		D161AA4818C613D100521200 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = D161AA4718C613D100521200 /* config.json */; };
 		D161AA4B18C6143600521200 /* BFPlayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D161AA4A18C6143600521200 /* BFPlayScene.m */; };
+		D161AA5818C621B900521200 /* bokeh.sks in Resources */ = {isa = PBXBuildFile; fileRef = D161AA5018C621B900521200 /* bokeh.sks */; };
+		D161AA5918C621B900521200 /* fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = D161AA5118C621B900521200 /* fire.sks */; };
+		D161AA5A18C621B900521200 /* firefiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = D161AA5218C621B900521200 /* firefiles.sks */; };
+		D161AA5B18C621B900521200 /* magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = D161AA5318C621B900521200 /* magic.sks */; };
+		D161AA5C18C621B900521200 /* rain.sks in Resources */ = {isa = PBXBuildFile; fileRef = D161AA5418C621B900521200 /* rain.sks */; };
+		D161AA5D18C621B900521200 /* smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = D161AA5518C621B900521200 /* smoke.sks */; };
+		D161AA5E18C621B900521200 /* snow.sks in Resources */ = {isa = PBXBuildFile; fileRef = D161AA5618C621B900521200 /* snow.sks */; };
+		D161AA5F18C621B900521200 /* spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = D161AA5718C621B900521200 /* spark.sks */; };
+		D161AA6618C621E500521200 /* ban.caf in Resources */ = {isa = PBXBuildFile; fileRef = D161AA6018C621E400521200 /* ban.caf */; };
+		D161AA6718C621E500521200 /* Kalimba.caf in Resources */ = {isa = PBXBuildFile; fileRef = D161AA6118C621E400521200 /* Kalimba.caf */; };
+		D161AA6818C621E500521200 /* out.caf in Resources */ = {isa = PBXBuildFile; fileRef = D161AA6218C621E500521200 /* out.caf */; };
+		D161AA6918C621E500521200 /* pi.caf in Resources */ = {isa = PBXBuildFile; fileRef = D161AA6318C621E500521200 /* pi.caf */; };
+		D161AA6A18C621E500521200 /* po.caf in Resources */ = {isa = PBXBuildFile; fileRef = D161AA6418C621E500521200 /* po.caf */; };
+		D161AA6B18C621E500521200 /* pu.caf in Resources */ = {isa = PBXBuildFile; fileRef = D161AA6518C621E500521200 /* pu.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +73,22 @@
 		D161AA4718C613D100521200 /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		D161AA4918C6143600521200 /* BFPlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPlayScene.h; sourceTree = "<group>"; };
 		D161AA4A18C6143600521200 /* BFPlayScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPlayScene.m; sourceTree = "<group>"; };
+		D161AA4C18C6213100521200 /* sks */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sks; sourceTree = "<group>"; };
+		D161AA4D18C6213100521200 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
+		D161AA5018C621B900521200 /* bokeh.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = bokeh.sks; path = sk_block/sks/bokeh.sks; sourceTree = "<group>"; };
+		D161AA5118C621B900521200 /* fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = fire.sks; path = sk_block/sks/fire.sks; sourceTree = "<group>"; };
+		D161AA5218C621B900521200 /* firefiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = firefiles.sks; path = sk_block/sks/firefiles.sks; sourceTree = "<group>"; };
+		D161AA5318C621B900521200 /* magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = magic.sks; path = sk_block/sks/magic.sks; sourceTree = "<group>"; };
+		D161AA5418C621B900521200 /* rain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = rain.sks; path = sk_block/sks/rain.sks; sourceTree = "<group>"; };
+		D161AA5518C621B900521200 /* smoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = smoke.sks; path = sk_block/sks/smoke.sks; sourceTree = "<group>"; };
+		D161AA5618C621B900521200 /* snow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = snow.sks; path = sk_block/sks/snow.sks; sourceTree = "<group>"; };
+		D161AA5718C621B900521200 /* spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = spark.sks; path = sk_block/sks/spark.sks; sourceTree = "<group>"; };
+		D161AA6018C621E400521200 /* ban.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ban.caf; path = sk_block/sound/ban.caf; sourceTree = "<group>"; };
+		D161AA6118C621E400521200 /* Kalimba.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Kalimba.caf; path = sk_block/sound/Kalimba.caf; sourceTree = "<group>"; };
+		D161AA6218C621E500521200 /* out.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = out.caf; path = sk_block/sound/out.caf; sourceTree = "<group>"; };
+		D161AA6318C621E500521200 /* pi.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = pi.caf; path = sk_block/sound/pi.caf; sourceTree = "<group>"; };
+		D161AA6418C621E500521200 /* po.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = po.caf; path = sk_block/sound/po.caf; sourceTree = "<group>"; };
+		D161AA6518C621E500521200 /* pu.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = pu.caf; path = sk_block/sound/pu.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +118,20 @@
 		D161AA0318C4D07200521200 = {
 			isa = PBXGroup;
 			children = (
+				D161AA6018C621E400521200 /* ban.caf */,
+				D161AA6118C621E400521200 /* Kalimba.caf */,
+				D161AA6218C621E500521200 /* out.caf */,
+				D161AA6318C621E500521200 /* pi.caf */,
+				D161AA6418C621E500521200 /* po.caf */,
+				D161AA6518C621E500521200 /* pu.caf */,
+				D161AA5018C621B900521200 /* bokeh.sks */,
+				D161AA5118C621B900521200 /* fire.sks */,
+				D161AA5218C621B900521200 /* firefiles.sks */,
+				D161AA5318C621B900521200 /* magic.sks */,
+				D161AA5418C621B900521200 /* rain.sks */,
+				D161AA5518C621B900521200 /* smoke.sks */,
+				D161AA5618C621B900521200 /* snow.sks */,
+				D161AA5718C621B900521200 /* spark.sks */,
 				D161AA1518C4D07300521200 /* sk_block */,
 				D161AA2E18C4D07900521200 /* sk_blockTests */,
 				D161AA0E18C4D07300521200 /* Frameworks */,
@@ -135,6 +179,8 @@
 		D161AA1618C4D07400521200 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D161AA4C18C6213100521200 /* sks */,
+				D161AA4D18C6213100521200 /* sound */,
 				D161AA1718C4D07400521200 /* sk_block-Info.plist */,
 				D161AA1818C4D07500521200 /* InfoPlist.strings */,
 				D161AA1B18C4D07600521200 /* main.m */,
@@ -241,6 +287,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D161AA6618C621E500521200 /* ban.caf in Resources */,
+				D161AA6718C621E500521200 /* Kalimba.caf in Resources */,
+				D161AA6818C621E500521200 /* out.caf in Resources */,
+				D161AA6918C621E500521200 /* pi.caf in Resources */,
+				D161AA6A18C621E500521200 /* po.caf in Resources */,
+				D161AA6B18C621E500521200 /* pu.caf in Resources */,
+				D161AA5818C621B900521200 /* bokeh.sks in Resources */,
+				D161AA5918C621B900521200 /* fire.sks in Resources */,
+				D161AA5A18C621B900521200 /* firefiles.sks in Resources */,
+				D161AA5B18C621B900521200 /* magic.sks in Resources */,
+				D161AA5C18C621B900521200 /* rain.sks in Resources */,
+				D161AA5D18C621B900521200 /* smoke.sks in Resources */,
+				D161AA5E18C621B900521200 /* snow.sks in Resources */,
+				D161AA5F18C621B900521200 /* spark.sks in Resources */,
 				D161AA1A18C4D07500521200 /* InfoPlist.strings in Resources */,
 				D161AA2218C4D07900521200 /* Images.xcassets in Resources */,
 				D161AA4818C613D100521200 /* config.json in Resources */,
