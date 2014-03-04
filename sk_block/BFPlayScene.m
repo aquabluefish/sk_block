@@ -8,6 +8,12 @@
 
 #import "BFPlayScene.h"
 
+static const uint32_t blockCategory = 0x1 << 0;
+static const uint32_t ballCategory = 0x1 << 1;
+
+@interface BFPlayScene () <SKPhysicsContactDelegate>
+@end
+
 @implementation BFPlayScene
 
 - (id)initWithSize:(CGSize)size {
@@ -15,6 +21,8 @@
     if (self) {
         [self addBlocks];
         [self addPaddle];
+        self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+        self.physicsWorld.contactDelegate = self;
     }
     return self;
 }
@@ -52,28 +60,6 @@ static NSDictionary *config = nil;
     }
 }
 
-- (SKNode *)newBlock {
-    CGFloat width = [config[@"block"][@"width"] floatValue];
-    CGFloat height = [config[@"block"][@"height"] floatValue];
-    int maxLife = [config[@"block"][@"max_life"] floatValue];
-    
-    SKSpriteNode *block = [SKSpriteNode spriteNodeWithColor:[SKColor cyanColor] size:CGSizeMake(width, height)];
-    block.name = @"block";
-    
-    int life = (arc4random() % maxLife) + 1;
-    block.userData = @{ @"life" : @(life) }.mutableCopy;
-    [self updateBlockAlpha:block];
-    
-    [self addChild:block];
-    
-    return block;
-}
-
-- (void)updateBlockAlpha:(SKNode *)block {
-    int life = [block.userData[@"life"] intValue];
-    block.alpha = life * 0.2f;
-}
-
 # pragma mark - Paddle
 
 - (void)addPaddle {
@@ -84,6 +70,8 @@ static NSDictionary *config = nil;
     SKSpriteNode *paddle = [SKSpriteNode spriteNodeWithColor:[SKColor brownColor] size:CGSizeMake(width, height)];
     paddle.name = @"paddle";
     paddle.position = CGPointMake(CGRectGetMidX(self.frame), y);
+    paddle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:paddle.size];
+    paddle.physicsBody.dynamic = NO;
     
     [self addChild:paddle];
 }
@@ -96,6 +84,8 @@ static NSDictionary *config = nil;
 
 - (void)addBall {
     CGFloat radius = [config[@"ball"][@"radius"] floatValue];
+    CGFloat velocityX = [config[@"ball"][@"velocity"][@"x"] floatValue];
+    CGFloat velocityY = [config[@"ball"][@"velocity"][@"y"] floatValue];
     
     SKShapeNode *ball = [SKShapeNode node];
     ball.name = @"ball";
@@ -106,6 +96,15 @@ static NSDictionary *config = nil;
     ball.path = path;
     ball.fillColor = [SKColor yellowColor];
     ball.strokeColor = [SKColor clearColor];
+    ball.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:radius];
+    ball.physicsBody.affectedByGravity = NO;
+    ball.physicsBody.velocity = CGVectorMake(velocityX, velocityY);
+    ball.physicsBody.restitution = 1.0f;
+    ball.physicsBody.linearDamping = 0;
+    ball.physicsBody.friction = 0;
+    ball.physicsBody.usesPreciseCollisionDetection = YES;
+    ball.physicsBody.categoryBitMask = ballCategory;
+    ball.physicsBody.contactTestBitMask = blockCategory;
     
     CGPathRelease(path);
     
@@ -135,6 +134,57 @@ static NSDictionary *config = nil;
     CGFloat duration = speed * diff;
     SKAction *move = [SKAction moveToX:x duration:duration];
     [[self paddleNode] runAction:move];
+}
+
+- (SKNode *)newBlock {
+    CGFloat width = [config[@"block"][@"width"] floatValue];
+    CGFloat height = [config[@"block"][@"height"] floatValue];
+    int maxLife = [config[@"block"][@"max_life"] floatValue];
+    
+    SKSpriteNode *block = [SKSpriteNode spriteNodeWithColor:[SKColor cyanColor] size:CGSizeMake(width, height)];
+    block.name = @"block";
+    
+    int life = (arc4random() % maxLife) + 1;
+    block.userData = @{ @"life" : @(life) }.mutableCopy;
+    block.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:block.size];
+    block.physicsBody.dynamic = NO;
+    block.physicsBody.categoryBitMask = blockCategory;
+    [self updateBlockAlpha:block];
+    
+    [self addChild:block];
+    
+    return block;
+}
+
+- (void)decreaseBlockLife:(SKNode *)block {
+    int life = [block.userData[@"life"] intValue] - 1;
+    block.userData[@"life"] = @(life);
+    [self updateBlockAlpha:block];
+}
+
+- (void)updateBlockAlpha:(SKNode *)block {
+    int life = [block.userData[@"life"] intValue];
+    block.alpha = life * 0.2f;
+}
+
+# pragma mark - SKPhysicsContactDelegate
+
+- (void)didBeginContact:(SKPhysicsContact *)contact {
+    SKPhysicsBody *firstBody, *secondBody;
+    
+    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
+        firstBody = contact.bodyA;
+        secondBody = contact.bodyB;
+    } else {
+        firstBody = contact.bodyB;
+        secondBody = contact.bodyA;
+    }
+    
+    if (firstBody.categoryBitMask & blockCategory) {
+        if (secondBody.categoryBitMask & ballCategory) {
+            [self decreaseBlockLife:firstBody.node];
+        }
+    }
 }
 
 @end
