@@ -33,6 +33,19 @@ static const uint32_t ballCategory = 0x1 << 1;
         
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsWorld.contactDelegate = self;
+        
+        self.projectileSoundEffectAction_pi = [SKAction playSoundFileNamed:@"pi.caf" waitForCompletion:NO];
+        self.projectileSoundEffectAction_pu = [SKAction playSoundFileNamed:@"pu.caf" waitForCompletion:NO];
+        self.projectileSoundEffectAction_po = [SKAction playSoundFileNamed:@"po.caf" waitForCompletion:NO];
+        self.projectileSoundEffectAction_ban = [SKAction playSoundFileNamed:@"ban.caf" waitForCompletion:NO];
+        self.projectileSoundEffectAction_out = [SKAction playSoundFileNamed:@"out.caf" waitForCompletion:NO];
+
+        NSString *bgmPath = [[NSBundle mainBundle] pathForResource:@"Kalimba" ofType:@"caf"];
+        self.bgmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:bgmPath] error:NULL];
+        self.bgmPlayer.numberOfLoops = -1;
+        [self.bgmPlayer play];
+
+        [self runAction:self.projectileSoundEffectAction_out];
     }
     return self;
 }
@@ -134,11 +147,6 @@ static NSDictionary *config = nil;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    if (![self ballNode]) {
-        [self addBall];
-        return;
-    }
-    
     UITouch *touch = [touches anyObject];
     CGPoint locaiton = [touch locationInNode:self];
     
@@ -149,6 +157,28 @@ static NSDictionary *config = nil;
     CGFloat duration = speed * diff;
     SKAction *move = [SKAction moveToX:x duration:duration];
     [[self paddleNode] runAction:move];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint locaiton = [touch locationInNode:self];
+    
+    CGFloat speed = [config[@"paddle"][@"speed"] floatValue];
+    
+    CGFloat x = locaiton.x;
+    CGFloat diff = abs(x - [self paddleNode].position.x);
+    CGFloat duration = speed * diff;
+    SKAction *move = [SKAction moveToX:x duration:duration];
+    
+    [[self paddleNode] runAction:move];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (![self ballNode]) {
+        [self addBall];
+        return;
+    }
 }
 
 - (SKNode *)newBlock {
@@ -178,6 +208,7 @@ static NSDictionary *config = nil;
     
     if (life < 1) {
         [self removeNodeWithSpark:block];
+        [self runAction:self.projectileSoundEffectAction_ban];
     }
     
     if ([self blockNodes].count < 1) {
@@ -284,7 +315,8 @@ static NSDictionary *config = nil;
     SKAction *remove = [SKAction removeFromParent];
     SKAction *sequence = [SKAction sequence:@[fadeOut, remove]];
     [spark runAction:sequence];
-    
+    [self runAction:self.projectileSoundEffectAction_ban];
+
     [node removeFromParent];
 }
 
@@ -298,6 +330,7 @@ static NSDictionary *config = nil;
 - (void)didBeginContact:(SKPhysicsContact *)contact {
     SKPhysicsBody *firstBody, *secondBody;
     
+    [self runAction:self.projectileSoundEffectAction_po];
     if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
         firstBody = contact.bodyA;
         secondBody = contact.bodyB;
@@ -309,19 +342,26 @@ static NSDictionary *config = nil;
     if (firstBody.categoryBitMask & blockCategory) {
         if (secondBody.categoryBitMask & ballCategory) {
             [self decreaseBlockLife:firstBody.node];
+            [self runAction:self.projectileSoundEffectAction_pu];
         }
     }
 }
 
 - (void)gameOver {
+    [self runAction:self.projectileSoundEffectAction_out];
     SKScene *scene = [BFGameOverScene sceneWithSize:self.size];
     SKTransition *transition = [SKTransition pushWithDirection:SKTransitionDirectionDown duration:1.0f];
+    [self.bgmPlayer stop];
+    self.bgmPlayer = nil;
     [self.view presentScene:scene transition:transition];
 }
 
 - (void)nextLevel {
+    [self runAction:self.projectileSoundEffectAction_out];
     BFPlayScene *scene = [[BFPlayScene alloc] initWithSize:self.size life:self.life stage:self.stage + 1];
     SKTransition *transition = [SKTransition doorwayWithDuration:1.0f];
+    [self.bgmPlayer stop];
+    self.bgmPlayer = nil;
     [self.view presentScene:scene transition:transition];
 }
 
