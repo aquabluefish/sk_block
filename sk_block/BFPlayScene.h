@@ -6,8 +6,13 @@
 //  Copyright (c) 2014年 Itoh Kohji. All rights reserved.
 //
 
-#import <SpriteKit/SpriteKit.h>
+#import <Foundation/Foundation.h>
+@import SpriteKit;
 
-@interface BFPlayScene : SKScene
+@interface BFPlayScene : SKScene;
+
+@property (nonatomic) int life;
+@property (nonatomic) int stage;
+- (id)initWithSize:(CGSize)size life:(int)life stage:(int)stage;
 
 @end

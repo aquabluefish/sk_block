@@ -7,6 +7,7 @@
 //
 
 #import "BFPlayScene.h"
+#import "BFGameOverScene.h"
 
 static const uint32_t blockCategory = 0x1 << 0;
 static const uint32_t ballCategory = 0x1 << 1;
@@ -16,16 +17,30 @@ static const uint32_t ballCategory = 0x1 << 1;
 
 @implementation BFPlayScene
 
-- (id)initWithSize:(CGSize)size {
+
+- (id)initWithSize:(CGSize)size life:(int)life stage:(int)stage {
     self = [super initWithSize:size];
     if (self) {
+        self.life = life;
+        self.stage = stage;
+        
         [self addBlocks];
         [self addPaddle];
+        
+        [self addStageLabel];
+        [self addLifeLabel];
+        [self updateLifeLabel];
+        
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsWorld.contactDelegate = self;
     }
     return self;
 }
+
+- (id)initWithSize:(CGSize)size {
+    return [self initWithSize:size life:[config[@"max_life"] intValue] stage:1];
+}
+
 
 static NSDictionary *config = nil;
 + (void)initialize {
@@ -98,7 +113,7 @@ static NSDictionary *config = nil;
     ball.strokeColor = [SKColor clearColor];
     ball.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:radius];
     ball.physicsBody.affectedByGravity = NO;
-    ball.physicsBody.velocity = CGVectorMake(velocityX, velocityY);
+    ball.physicsBody.velocity = CGVectorMake(velocityX + self.stage, velocityY + self.stage);
     ball.physicsBody.restitution = 1.0f;
     ball.physicsBody.linearDamping = 0;
     ball.physicsBody.friction = 0;
@@ -164,6 +179,96 @@ static NSDictionary *config = nil;
     if (life < 1) {
         [self removeNodeWithSpark:block];
     }
+    
+    if ([self blockNodes].count < 1) {
+        [self nextLevel];
+    }
+}
+
+- (NSArray *)blockNodes {
+    NSMutableArray *nodes = @[].mutableCopy;
+    [self enumerateChildNodesWithName:@"block" usingBlock:^(SKNode *node, BOOL *stop) {
+        [nodes addObject:node];
+    }];
+    return nodes;
+}
+
+# pragma mark - Label
+
+- (void)addStageLabel {
+    CGFloat margin = [config[@"label"][@"margin"] floatValue];
+    CGFloat fontSize = [config[@"label"][@"font_size"] floatValue];
+    
+    SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"HelveticaNeue-Bold"];
+    label.text = [NSString stringWithFormat:@"STAGE %d", _stage];
+    label.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
+    label.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
+    label.position = CGPointMake(CGRectGetMaxX(self.frame) - margin, CGRectGetMaxY(self.frame) - margin);
+    label.fontSize = fontSize;
+    label.zPosition = 1.0f;
+    [self addChild:label];
+}
+
+- (void)addLifeLabel {
+    CGFloat margin = [config[@"label"][@"margin"] floatValue];
+    CGFloat fontSize = [config[@"label"][@"font_size"] floatValue];
+    
+    SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"HiraKakuProN-W3"];
+    label.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
+    label.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    label.position = CGPointMake(margin, CGRectGetMaxY(self.frame) - margin);
+    label.fontSize = fontSize;
+    label.zPosition = 1.0f;
+    label.color = [SKColor magentaColor];
+    label.colorBlendFactor = 1.0f;
+    label.name = @"lifeLabel";
+    [self addChild:label];
+}
+
+- (void)updateLifeLabel {
+    NSMutableString *s = @"".mutableCopy;
+    for (int i = 0; i < _life; i++) {
+        [s appendString:@"◆"];
+    }
+    [self lifeLabel].text = s;
+}
+
+- (SKLabelNode *)lifeLabel {
+    return (SKLabelNode *)[self childNodeWithName:@"lifeLabel"];
+}
+
+# pragma mark - Callbacks
+
+- (void)update:(NSTimeInterval)currentTime {
+    if((int)currentTime % 5 == 0) {
+        CGVector velocity = [self ballNode].physicsBody.velocity;
+        velocity.dx *= 1.001f;
+        velocity.dy *= 1.001f;
+        [self ballNode].physicsBody.velocity = velocity;
+    }
+}
+
+- (void)didEvaluateActions {
+    CGFloat width = [config[@"paddle"][@"width"] floatValue];
+    
+    CGPoint paddlePosition = [self paddleNode].position;
+    if (paddlePosition.x < width / 2) {
+        paddlePosition.x = width / 2;
+    } else if (paddlePosition.x > CGRectGetWidth(self.frame) - width / 2) {
+        paddlePosition.x = CGRectGetWidth(self.frame) - width / 2;
+    }
+    [self paddleNode].position = paddlePosition;
+}
+
+- (void)didSimulatePhysics {
+    if ([self ballNode] && [self ballNode].position.y < [config[@"ball"][@"radius"] floatValue] * 2) {
+        [self removeNodeWithSpark:[self ballNode]];
+        _life--;
+        [self updateLifeLabel];
+        if (_life < 1) {
+            [self gameOver];
+        }
+    }
 }
 
 # pragma mark - Utilities
@@ -175,7 +280,7 @@ static NSDictionary *config = nil;
     spark.xScale = spark.yScale = 0.3f;
     [self addChild:spark];
     
-    SKAction *fadeOut = [SKAction fadeOutWithDuration:0.3f];
+    SKAction *fadeOut = [SKAction fadeOutWithDuration:5.0f];
     SKAction *remove = [SKAction removeFromParent];
     SKAction *sequence = [SKAction sequence:@[fadeOut, remove]];
     [spark runAction:sequence];
@@ -206,6 +311,18 @@ static NSDictionary *config = nil;
             [self decreaseBlockLife:firstBody.node];
         }
     }
+}
+
+- (void)gameOver {
+    SKScene *scene = [BFGameOverScene sceneWithSize:self.size];
+    SKTransition *transition = [SKTransition pushWithDirection:SKTransitionDirectionDown duration:1.0f];
+    [self.view presentScene:scene transition:transition];
+}
+
+- (void)nextLevel {
+    BFPlayScene *scene = [[BFPlayScene alloc] initWithSize:self.size life:self.life stage:self.stage + 1];
+    SKTransition *transition = [SKTransition doorwayWithDuration:1.0f];
+    [self.view presentScene:scene transition:transition];
 }
 
 @end
