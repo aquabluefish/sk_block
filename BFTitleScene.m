@@ -7,6 +7,7 @@
 //
 
 #import "BFTitleScene.h"
+#import "BFPlayScene.h"
 
 @implementation BFTitleScene
 
@@ -20,6 +21,12 @@
         [self addChild:titleLabel];
     }
     return self;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    SKScene *scene = [BFPlayScene sceneWithSize:self.size];
+    SKTransition *transition = [SKTransition pushWithDirection:SKTransitionDirectionUp duration:1.0f];
+    [self.view presentScene:scene transition:transition];
 }
 
 @end

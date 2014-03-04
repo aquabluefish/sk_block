@@ -21,6 +21,8 @@
 		D161AA3518C4D07C00521200 /* sk_blockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D161AA3418C4D07C00521200 /* sk_blockTests.m */; };
 		D161AA4018C4D38B00521200 /* BFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D161AA3F18C4D38B00521200 /* BFViewController.m */; };
 		D161AA4618C6115A00521200 /* BFTitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D161AA4518C6115A00521200 /* BFTitleScene.m */; };
+		D161AA4818C613D100521200 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = D161AA4718C613D100521200 /* config.json */; };
+		D161AA4B18C6143600521200 /* BFPlayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D161AA4A18C6143600521200 /* BFPlayScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,9 @@
 		D161AA3F18C4D38B00521200 /* BFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BFViewController.m; path = ../BFViewController.m; sourceTree = "<group>"; };
 		D161AA4418C6115A00521200 /* BFTitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BFTitleScene.h; path = ../BFTitleScene.h; sourceTree = "<group>"; };
 		D161AA4518C6115A00521200 /* BFTitleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BFTitleScene.m; path = ../BFTitleScene.m; sourceTree = "<group>"; };
+		D161AA4718C613D100521200 /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
+		D161AA4918C6143600521200 /* BFPlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPlayScene.h; sourceTree = "<group>"; };
+		D161AA4A18C6143600521200 /* BFPlayScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPlayScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +124,8 @@
 				D161AA3F18C4D38B00521200 /* BFViewController.m */,
 				D161AA4418C6115A00521200 /* BFTitleScene.h */,
 				D161AA4518C6115A00521200 /* BFTitleScene.m */,
+				D161AA4918C6143600521200 /* BFPlayScene.h */,
+				D161AA4A18C6143600521200 /* BFPlayScene.m */,
 				D161AA2118C4D07900521200 /* Images.xcassets */,
 				D161AA1618C4D07400521200 /* Supporting Files */,
 			);
@@ -132,6 +139,7 @@
 				D161AA1818C4D07500521200 /* InfoPlist.strings */,
 				D161AA1B18C4D07600521200 /* main.m */,
 				D161AA1D18C4D07600521200 /* sk_block-Prefix.pch */,
+				D161AA4718C613D100521200 /* config.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -235,6 +243,7 @@
 			files = (
 				D161AA1A18C4D07500521200 /* InfoPlist.strings in Resources */,
 				D161AA2218C4D07900521200 /* Images.xcassets in Resources */,
+				D161AA4818C613D100521200 /* config.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D161AA4B18C6143600521200 /* BFPlayScene.m in Sources */,
 				D161AA4018C4D38B00521200 /* BFViewController.m in Sources */,
 				D161AA4618C6115A00521200 /* BFTitleScene.m in Sources */,
 				D161AA2018C4D07700521200 /* BFAppDelegate.m in Sources */,
