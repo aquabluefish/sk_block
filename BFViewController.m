@@ -7,6 +7,7 @@
 //
 
 #import "BFViewController.h"
+#import "BFTitleScene.h"
 @import SpriteKit;
 
 @implementation BFViewController
@@ -25,7 +26,8 @@
     skView.showsNodeCount = YES;
     skView.showsFPS = YES;
     
-    SKScene *scene = [SKScene sceneWithSize:self.view.bounds.size];
+    //   SKScene *scene = [SKScene sceneWithSize:self.view.bounds.size];
+    SKScene *scene = [BFTitleScene sceneWithSize:self.view.bounds.size];
     [skView presentScene:scene];
 }
 

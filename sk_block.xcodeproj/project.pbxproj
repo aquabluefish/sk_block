@@ -20,6 +20,7 @@
 		D161AA3318C4D07B00521200 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D161AA3118C4D07B00521200 /* InfoPlist.strings */; };
 		D161AA3518C4D07C00521200 /* sk_blockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D161AA3418C4D07C00521200 /* sk_blockTests.m */; };
 		D161AA4018C4D38B00521200 /* BFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D161AA3F18C4D38B00521200 /* BFViewController.m */; };
+		D161AA4618C6115A00521200 /* BFTitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D161AA4518C6115A00521200 /* BFTitleScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		D161AA3418C4D07C00521200 /* sk_blockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = sk_blockTests.m; sourceTree = "<group>"; };
 		D161AA3E18C4D38B00521200 /* BFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BFViewController.h; path = ../BFViewController.h; sourceTree = "<group>"; };
 		D161AA3F18C4D38B00521200 /* BFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BFViewController.m; path = ../BFViewController.m; sourceTree = "<group>"; };
+		D161AA4418C6115A00521200 /* BFTitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BFTitleScene.h; path = ../BFTitleScene.h; sourceTree = "<group>"; };
+		D161AA4518C6115A00521200 /* BFTitleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BFTitleScene.m; path = ../BFTitleScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 				D161AA1F18C4D07700521200 /* BFAppDelegate.m */,
 				D161AA3E18C4D38B00521200 /* BFViewController.h */,
 				D161AA3F18C4D38B00521200 /* BFViewController.m */,
+				D161AA4418C6115A00521200 /* BFTitleScene.h */,
+				D161AA4518C6115A00521200 /* BFTitleScene.m */,
 				D161AA2118C4D07900521200 /* Images.xcassets */,
 				D161AA1618C4D07400521200 /* Supporting Files */,
 			);
@@ -249,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D161AA4018C4D38B00521200 /* BFViewController.m in Sources */,
+				D161AA4618C6115A00521200 /* BFTitleScene.m in Sources */,
 				D161AA2018C4D07700521200 /* BFAppDelegate.m in Sources */,
 				D161AA1C18C4D07600521200 /* main.m in Sources */,
 			);
@@ -453,6 +459,7 @@
 				D161AA3A18C4D07C00521200 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D161AA3B18C4D07C00521200 /* Build configuration list for PBXNativeTarget "sk_blockTests" */ = {
 			isa = XCConfigurationList;
@@ -461,6 +468,7 @@
 				D161AA3D18C4D07C00521200 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
