@@ -27,6 +27,12 @@
 		D161AA7118C6272D00521200 /* spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = D161AA6F18C6272D00521200 /* spark.sks */; };
 		D161AA7218C6272D00521200 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = D161AA7018C6272D00521200 /* spark.png */; };
 		D161AA7418C6276400521200 /* fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = D161AA7318C6276400521200 /* fire.sks */; };
+		D180372018C730C300EBAF3D /* ban.caf in Resources */ = {isa = PBXBuildFile; fileRef = D180371A18C730C200EBAF3D /* ban.caf */; };
+		D180372118C730C300EBAF3D /* Kalimba.caf in Resources */ = {isa = PBXBuildFile; fileRef = D180371B18C730C200EBAF3D /* Kalimba.caf */; };
+		D180372218C730C300EBAF3D /* out.caf in Resources */ = {isa = PBXBuildFile; fileRef = D180371C18C730C200EBAF3D /* out.caf */; };
+		D180372318C730C300EBAF3D /* pi.caf in Resources */ = {isa = PBXBuildFile; fileRef = D180371D18C730C200EBAF3D /* pi.caf */; };
+		D180372418C730C300EBAF3D /* po.caf in Resources */ = {isa = PBXBuildFile; fileRef = D180371E18C730C200EBAF3D /* po.caf */; };
+		D180372518C730C300EBAF3D /* pu.caf in Resources */ = {isa = PBXBuildFile; fileRef = D180371F18C730C300EBAF3D /* pu.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,12 +69,17 @@
 		D161AA4718C613D100521200 /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		D161AA4918C6143600521200 /* BFPlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPlayScene.h; sourceTree = "<group>"; };
 		D161AA4A18C6143600521200 /* BFPlayScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPlayScene.m; sourceTree = "<group>"; };
-		D161AA4D18C6213100521200 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
 		D161AA6C18C6241F00521200 /* BFGameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFGameOverScene.h; sourceTree = "<group>"; };
 		D161AA6D18C6241F00521200 /* BFGameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFGameOverScene.m; sourceTree = "<group>"; };
 		D161AA6F18C6272D00521200 /* spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = spark.sks; sourceTree = "<group>"; };
 		D161AA7018C6272D00521200 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		D161AA7318C6276400521200 /* fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire.sks; sourceTree = "<group>"; };
+		D180371A18C730C200EBAF3D /* ban.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ban.caf; path = sound/ban.caf; sourceTree = "<group>"; };
+		D180371B18C730C200EBAF3D /* Kalimba.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Kalimba.caf; path = sound/Kalimba.caf; sourceTree = "<group>"; };
+		D180371C18C730C200EBAF3D /* out.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = out.caf; path = sound/out.caf; sourceTree = "<group>"; };
+		D180371D18C730C200EBAF3D /* pi.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = pi.caf; path = sound/pi.caf; sourceTree = "<group>"; };
+		D180371E18C730C200EBAF3D /* po.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = po.caf; path = sound/po.caf; sourceTree = "<group>"; };
+		D180371F18C730C300EBAF3D /* pu.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = pu.caf; path = sound/pu.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +158,6 @@
 		D161AA1618C4D07400521200 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D161AA4D18C6213100521200 /* sound */,
 				D161AA1718C4D07400521200 /* sk_block-Info.plist */,
 				D161AA1818C4D07500521200 /* InfoPlist.strings */,
 				D161AA1B18C4D07600521200 /* main.m */,
@@ -156,6 +166,12 @@
 				D161AA6F18C6272D00521200 /* spark.sks */,
 				D161AA7018C6272D00521200 /* spark.png */,
 				D161AA7318C6276400521200 /* fire.sks */,
+				D180371A18C730C200EBAF3D /* ban.caf */,
+				D180371B18C730C200EBAF3D /* Kalimba.caf */,
+				D180371C18C730C200EBAF3D /* out.caf */,
+				D180371D18C730C200EBAF3D /* pi.caf */,
+				D180371E18C730C200EBAF3D /* po.caf */,
+				D180371F18C730C300EBAF3D /* pu.caf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -257,6 +273,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D180372018C730C300EBAF3D /* ban.caf in Resources */,
+				D180372118C730C300EBAF3D /* Kalimba.caf in Resources */,
+				D180372218C730C300EBAF3D /* out.caf in Resources */,
+				D180372318C730C300EBAF3D /* pi.caf in Resources */,
+				D180372418C730C300EBAF3D /* po.caf in Resources */,
+				D180372518C730C300EBAF3D /* pu.caf in Resources */,
 				D161AA7218C6272D00521200 /* spark.png in Resources */,
 				D161AA1A18C4D07500521200 /* InfoPlist.strings in Resources */,
 				D161AA7118C6272D00521200 /* spark.sks in Resources */,
